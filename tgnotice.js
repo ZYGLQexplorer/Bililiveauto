@@ -3,7 +3,7 @@ dotenv.config()
 const axios = require('axios').default;
 
 function tgnotice(banner, text){
-    var url = 'https://api.telegram.org/bot' + process.env.TG_TOKEN + '/sendMessage'
+    var url = 'https://rp.zeroyuki.cn/https://api.telegram.org/bot' + process.env.TG_TOKEN + '/sendMessage'
     axios({
         url: url,
         method: 'post',
@@ -21,7 +21,8 @@ function tgnotice(banner, text){
         data: {
             chat_id: process.env.TG_CHAT_ID,
             text: banner + "\n" + text,
-            parse_mode: "Markdown"
+            parse_mode: "Markdown",
+            disable_web_page_preview: true
         }
     }).then(function (response) {
     if (response.status == 200) {
