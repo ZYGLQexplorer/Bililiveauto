@@ -6,6 +6,7 @@
 
 ```bash
 git clone https://github.com/ZYGLQexplorer/Bililiveauto
+cp .env.example .env
 ```
 
 ## 配置
