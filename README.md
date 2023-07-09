@@ -1,11 +1,11 @@
 # Bililiveauto
 
-兼容[B站录播姬](https://github.com/BililiveRecorder/BililiveRecorder)的自动转封装、自动上传、弹幕转码脚本
+兼容[B站录播姬](https://github.com/BililiveRecorder/BililiveRecorder)的开播自动提醒脚本
 
 ## 下载
 
 ```bash
-git clone https://github.com/Morax-xyc/Bililiveauto
+git clone https://github.com/ZYGLQexplorer/Bililiveauto
 ```
 
 ## 配置
@@ -16,22 +16,9 @@ git clone https://github.com/Morax-xyc/Bililiveauto
 
 #run
 port=8081
-rclonedir=od:/Bililive # rclone中配置的上传地址
-danmufc=/home/danmu/DM # danmakufactory编译后的二进制文件
-workdir=/home/bililiveauto # 脚本所在文件夹
-bilifile=/home/brec/file # 录播姬的工作目录
-
 #Telegram
 TG_CHAT_ID=12345678 # Telegram ID
 TG_TOKEN=9876543:abcdeffhijklmnopqrstuvwxyz # Telegram Bot Token
-
-#功能开关
-
-#是否上传原始文件？true/false
-uploadorigin=false
-
-#是否删除本地文件？true/false
-deletelocal=true
 ```
 
 ### 通知
@@ -41,58 +28,6 @@ deletelocal=true
 最后将两者填入配置文件即可
 
 当然要记得私聊一下你的bot
-
-### 弹幕处理
-
-弹幕处理使用了一个叫[DanmakuFactory](https://github.com/hihkm/DanmakuFactory)的项目
-
-配置文件中的danmufc就需要自行编译[DanmakuFactory](https://github.com/hihkm/DanmakuFactory)后填入编译好的二进制文件地址
-
-请在编译完成后自行配置并加上`--save`参数保存json文件以便使用。也可以使用下面我的配置：
-```json
-{
-    "resolution": [1920, 1080],
-    "scrolltime": 12.000000,
-    "fixtime": 5.000000,
-    "density": -1,
-    "fontname": "Microsoft YaHei",
-    "fontsize": 38,
-    "opacity": 180,
-    "outline": 0,
-    "shadow": 1,
-    "displayArea": 0.300000,
-    "scrollArea": 0.300000,
-    "bold": false,
-    "showUsernames": false,
-    "showMsgbox": false,
-    "msgboxSize": [500, 1080],
-    "msgboxPos": [10, 0],
-    "msgboxFontsize": 35,
-    "giftMinPrice": 0.00,
-    "blockmode": ["Btm","Special","Repeat"],
-    "statmode": []
-}
-```
-保存在编译好的二进制文件所在目录下的`DanmakuFactoryConfig.json`即可
-
-本配置去除所有特殊弹幕、只在30%的屏幕上显示弹幕、共显示12秒、去除重复弹幕
-
-### 自动转封装
-
-本脚本使用FFmpeg来处理视频文件
-
-录播姬录制下来的文件为flv格式，但编码就是h264，所以可以很方便地转封装为mkv格式
-
-### 自动上传
-
-自动上传使用rclone
-
-安装脚本:
-```bash
-curl https://rclone.org/install.sh | sudo bash
-```
-
-配置及使用建议Google一下，教程太多就不反复造轮子了
 
 ## 运行
 
@@ -138,13 +73,8 @@ pm2 save
 在录播姬的设置里, 将地址填入"webhook v2"即可, 如"http://127.0.0.1:8081"
 
 # 鸣谢
+[原项目 Morax-xyc/Bililiveauto](https://github.com/Morax-xyc/Bililiveauto)
 
 [Bilibili直播](https://live.bilibili.com)
 
 [B站录播姬](https://github.com/BililiveRecorder/BililiveRecorder)
-
-[DanmakuFactory](https://github.com/hihkm/DanmakuFactory)
-
-[Rclone](https://github.com/rclone/rclone)
-
-[FFmpeg](https://git.ffmpeg.org/ffmpeg.git)
